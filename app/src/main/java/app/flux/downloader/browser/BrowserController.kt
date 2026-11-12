@@ -258,15 +258,18 @@ class BrowserController(
     // ------------------------------------------------------------------
     // Ajustes y privacidad
     // ------------------------------------------------------------------
-    fun setBlockAds(v: Boolean) {
+    fun updateBlockAds(v: Boolean) {
         blockAds = v
         prefs.blockAds = v
         applyGenericCosmetics()
     }
 
-    fun setBlockRedirects(v: Boolean) { blockRedirects = v; prefs.blockRedirects = v }
+    fun updateBlockRedirects(v: Boolean) {
+        blockRedirects = v
+        prefs.blockRedirects = v
+    }
 
-    fun setSiteProtected(on: Boolean) {
+    fun updateSiteProtected(on: Boolean) {
         val h = pageHost ?: return
         prefs.setSiteProtected(h, on)
         setPage(currentUrl)
