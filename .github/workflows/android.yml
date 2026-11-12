@@ -3,11 +3,17 @@ name: Android CI
 on:
   push:
     paths:
-      - "Flux/**"
+      - "app/**"
+      - "build.gradle.kts"
+      - "settings.gradle.kts"
+      - "gradle.properties"
       - ".github/workflows/android.yml"
   pull_request:
     paths:
-      - "Flux/**"
+      - "app/**"
+      - "build.gradle.kts"
+      - "settings.gradle.kts"
+      - "gradle.properties"
       - ".github/workflows/android.yml"
   workflow_dispatch:
 
@@ -18,9 +24,6 @@ jobs:
   build:
     name: Build and test
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: Flux
 
     steps:
       - name: Check out repository
@@ -52,5 +55,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: flux-debug-apk
-          path: Flux/app/build/outputs/apk/debug/*.apk
+          path: app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
