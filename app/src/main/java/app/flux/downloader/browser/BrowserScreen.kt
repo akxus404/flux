@@ -444,12 +444,12 @@ private fun ProtectionDialog(c: BrowserController, onFilters: () -> Unit, onDism
         title = { Text("Protección") },
         text = {
             Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                SwitchRow("Bloquear anuncios y rastreadores", c.blockAds) { c.setBlockAds(it) }
+                SwitchRow("Bloquear anuncios y rastreadores", c.blockAds) { c.updateBlockAds(it) }
                 if (c.blockAds && !c.showStart && c.currentUrl != null) {
                     val host = remember(c.currentUrl) { Uri.parse(c.currentUrl).host.orEmpty() }
-                    SwitchRow("Protección en $host", c.siteProtected) { c.setSiteProtected(it) }
+                    SwitchRow("Protección en $host", c.siteProtected) { c.updateSiteProtected(it) }
                 }
-                SwitchRow("Bloquear redirecciones automáticas", c.blockRedirects) { c.setBlockRedirects(it) }
+                SwitchRow("Bloquear redirecciones automáticas", c.blockRedirects) { c.updateBlockRedirects(it) }
                 Text(
                     "${c.blockedCount} en esta página · ${c.totalBlocked} en total",
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
